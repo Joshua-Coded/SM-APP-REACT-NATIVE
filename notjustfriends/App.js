@@ -46,14 +46,22 @@ export default function App() {
           </View>
 
           {/* BODY SECTION */}
+      
         <Text style={styles.description}>{post.description}</Text>
-        <Image 
+       
+       {post.image && (<Image 
           source={{uri: post.image}}
           style={styles.image}
-        />
+        />)}
+      
+      
           {/* FOOTER SECTION */}
+      
           <View style={styles.footer}>
-
+              <View style={styles.statRow}>
+                <Text style={styles.likedBy}>Joshua and Alana {post.numberOfLikes} Others </Text>
+                <Text style={styles.numberOfShares}>{post.numberOfShares} shares</Text>
+                </View>
           </View>
    </View>
       <StatusBar style="auto" />
@@ -106,10 +114,15 @@ const styles = StyleSheet.create({
 // Body styles
   
   description: {
-    
+    paddingHorizontal: 10,
+    lineHeight: 20,
+    letterSpacing: 0.3,
   },
 
   image: {
+      width: '100%',
+      aspectRatios: 1,
+      marginTop: 10,  
 
   },
 
