@@ -1,6 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import {Entypo} from '@expo/vector-icons';
+import {
+  Entypo,
+  AntDesign,
+  FontAwesome5,
+  MaterialCommunityIcons,
+} from '@expo/vector-icons';
+import LikeImage from './assets/images/like.png';
 
 // dummy data
 const post = {
@@ -58,9 +64,30 @@ export default function App() {
           {/* FOOTER SECTION */}
       
           <View style={styles.footer}>
-              <View style={styles.statRow}>
-                <Text style={styles.likedBy}>Joshua and Alana {post.numberOfLikes} Others </Text>
-                <Text style={styles.numberOfShares}>{post.numberOfShares} shares</Text>
+            {/* Stats Row */}
+              <View style={styles.statsRow}>
+                <Image source={LikeImage} style={styles.likeIcon} />
+                <Text style={styles.likeBy}>Joshua and Alana {post.numberOfLikes} Others </Text>
+                <Text style={styles.shares}>{post.numberOfShares} shares</Text>
+                </View>
+                {/* Button Row */}
+                <View style={styles.buttonRow}>
+                    <View style={styles.iconButton}>
+                      <AntDesign name='like2' size={18} color="gray" />
+                      <Text style={styles.iconButtonText}>Like</Text>
+                    </View>
+
+                    <View style={styles.iconButton}>
+                      <FontAwesome5 name='comment-alt' size={18} color="gray" />
+                      <Text style={styles.iconButtonText}>Comment</Text>
+                    </View>
+
+                    <View style={styles.iconButton}>
+                      <MaterialCommunityIcons name='share-outline' size={18} color="gray" />
+                      <Text style={styles.iconButtonText}>Share</Text>
+                    </View>
+
+
                 </View>
           </View>
    </View>
@@ -126,4 +153,46 @@ const styles = StyleSheet.create({
 
   },
 
+
+  // footer styles
+  footer: {
+    paddingHorizontal: 10,
+     
+  },
+  statsRow: {
+    paddingVertical: 10,
+    flexDirection: 'row',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: "lightgray",
+  },
+  likeIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 5,
+  },
+  likeBy: {
+    color: "gray",
+  },
+  shares: {
+    marginLeft: 'auto',
+    color: 'gray',
+  },
+
+  // Button Rows Styles
+  buttonRow: {
+    marginVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  
+  iconButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  iconButtonText: {
+    marginLeft: 5,
+    color: 'gray',
+    fontWeight: 500,
+  },
 });
